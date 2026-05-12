@@ -562,7 +562,7 @@ void Instructor::loadPassFailReport() {
 
     int passCount = 0, failCount = 0;
 
-    backend->getPassFailReport(passCount, failCount, 1.0); ////minimun gpa to pass is 2.0
+    backend->getPassFailReport(passCount, failCount, 1.0); ////minimun gpa to pass is 1.0
 
     int total = passCount + failCount;
 

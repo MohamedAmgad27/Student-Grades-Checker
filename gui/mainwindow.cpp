@@ -16,21 +16,27 @@
 // helper function to load data
 void loadTestData(GradeManager* backend) {
     // ==========================================
-    // 1. Inject Lecturers
+    // 1. Inject 5 Lecturers
     // ==========================================
     backend->addLecturer(new Lecturer(101, "Dr. Ahmed Raza", "Computer Science"));
     backend->addLecturer(new Lecturer(102, "Dr. Sarah Johnson", "Software Engineering"));
     backend->addLecturer(new Lecturer(103, "Dr. Tarek Amr", "Information Technology"));
+    backend->addLecturer(new Lecturer(104, "Dr. Laila Mahmoud", "Artificial Intelligence"));
+    backend->addLecturer(new Lecturer(105, "Dr. Karim Fathy", "Mathematics"));
 
     // ==========================================
-    // 2. Inject Courses
+    // 2. Inject 5 Courses
     // ==========================================
     backend->addCourse(new Course(3, "CSE333", "Data Structures", backend->searchLecturer(101)));
     backend->addCourse(new Course(4, "CSE444", "Algorithms", backend->searchLecturer(102)));
-    backend->addCourse(new Course(3, "SWE222", "Software Design", nullptr));
+    backend->addCourse(new Course(3, "SWE222", "Software Design", backend->searchLecturer(103)));
+    backend->addCourse(new Course(4, "MTH101", "Calculus I", backend->searchLecturer(105)));
+    
+    // Deliberately leaving AI500 unassigned to test the "Unassigned" UI logic
+    backend->addCourse(new Course(3, "AI500", "Machine Learning", nullptr));
 
     // ==========================================
-    // 3. Inject Students
+    // 3. Inject 5 Students
     // ==========================================
     backend->addStudent(1045, "Ahmed Raza");
     backend->addStudent(1046, "Fatima Khan");
@@ -39,34 +45,52 @@ void loadTestData(GradeManager* backend) {
     backend->addStudent(1049, "Usman Javed");
 
     // ==========================================
-    // 4. Register Courses & Assign Grades (NEW SYSTEM)
+    // 4. Register Courses & Assign Grades 
     // ==========================================
 
-    // Ahmed
+    // 1. Ahmed - High Achiever (Solid Pass)
     backend->registerStudentForCourse(1045, "CSE333", Term::Fall, 3);
-    backend->gradeStudentCourse(1045, "CSE333", 3.8); // High grade
+    backend->gradeStudentCourse(1045, "CSE333", 3.8); 
     backend->registerStudentForCourse(1045, "CSE444", Term::Spring, 4);
     backend->gradeStudentCourse(1045, "CSE444", 3.9);
+    backend->registerStudentForCourse(1045, "MTH101", Term::Fall, 4);
+    backend->gradeStudentCourse(1045, "MTH101", 4.0);
+    backend->registerStudentForCourse(1045, "AI500", Term::Spring, 3);
+    backend->gradeStudentCourse(1045, "AI500", -1.0); // In Progress
 
-    // Fatima
+    // 2. Fatima - Good Student (Pass)
     backend->registerStudentForCourse(1046, "CSE333", Term::Fall, 3);
     backend->gradeStudentCourse(1046, "CSE333", 3.2);
     backend->registerStudentForCourse(1046, "SWE222", Term::Spring, 3);
     backend->gradeStudentCourse(1046, "SWE222", 3.5);
+    backend->registerStudentForCourse(1046, "MTH101", Term::Fall, 4);
+    backend->gradeStudentCourse(1046, "MTH101", 2.8);
 
-    // Hassan
+    // 3. Hassan - Struggling Student (Fail - CGPA under 2.0)
     backend->registerStudentForCourse(1047, "CSE333", Term::Fall, 3);
-    backend->gradeStudentCourse(1047, "CSE333", 2.5); // Lower grade
+    backend->gradeStudentCourse(1047, "CSE333", 1.5); 
+    backend->registerStudentForCourse(1047, "MTH101", Term::Fall, 4);
+    backend->gradeStudentCourse(1047, "MTH101", 1.0); 
+    backend->registerStudentForCourse(1047, "SWE222", Term::Spring, 3);
+    backend->gradeStudentCourse(1047, "SWE222", -1.0); // In Progress
 
-    // Ayesha (Top Student!)
+    // 4. Ayesha - The Valedictorian (Perfect 4.0)
     backend->registerStudentForCourse(1048, "CSE444", Term::Fall, 4);
     backend->gradeStudentCourse(1048, "CSE444", 4.0);
     backend->registerStudentForCourse(1048, "SWE222", Term::Spring, 3);
     backend->gradeStudentCourse(1048, "SWE222", 4.0);
+    backend->registerStudentForCourse(1048, "AI500", Term::Spring, 3);
+    backend->gradeStudentCourse(1048, "AI500", 4.0);
 
-    // Usman
+    // 5. Usman - The Borderline Student (Barely Passing)
     backend->registerStudentForCourse(1049, "SWE222", Term::Fall, 3);
-    backend->gradeStudentCourse(1049, "SWE222", 3.1);
+    backend->gradeStudentCourse(1049, "SWE222", 2.1);
+    backend->registerStudentForCourse(1049, "CSE333", Term::Fall, 3);
+    backend->gradeStudentCourse(1049, "CSE333", 1.8);
+    backend->registerStudentForCourse(1049, "MTH101", Term::Spring, 4);
+    backend->gradeStudentCourse(1049, "MTH101", 2.0);
+    backend->registerStudentForCourse(1049, "CSE444", Term::Spring, 4);
+    backend->gradeStudentCourse(1049, "CSE444", -1.0); // In Progress
 }
 
 MainWindow::MainWindow(GradeManager* manager, QWidget *parent)
