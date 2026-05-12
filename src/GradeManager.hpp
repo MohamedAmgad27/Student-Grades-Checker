@@ -69,8 +69,7 @@ public:
     vector<Student*> getAllStudentsAsList() const;
 
     // Habiba: GUI Fetcher -->
-    // Returns a flat list of pointers to all students sorted by ID
-    std::vector<Student*> getAllStudents() const;
+
     // // Display operations (Terminal only)
     // void displayAllStudents() const;
 

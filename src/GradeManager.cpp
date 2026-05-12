@@ -274,28 +274,4 @@ map<string, int> GradeManager::getGradeDistribution() const {
 
     return distribution;
 
-// ==============================================================
-// NEW UI TRANSLATION METHODS
-// ==============================================================
-}
-
-std::vector<Student *> GradeManager::getAllStudents() const
-{
-    std::vector<Student *> studentList;
-    collectStudentsInOrder(root, studentList);
-    return studentList;
-}
-
-void GradeManager::collectStudentsInOrder(TreeNode *node, std::vector<Student *> &studentList) const
-{
-    if (node != nullptr)
-    {
-        collectStudentsInOrder(node->left, studentList);
-
-        // Grab the memory address of the student and add it to our UI list
-        studentList.push_back(const_cast<Student *>(&(node->student)));
-
-        collectStudentsInOrder(node->right, studentList);
-    }
-
 }

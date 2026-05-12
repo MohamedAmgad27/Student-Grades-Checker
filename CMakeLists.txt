@@ -52,6 +52,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         gui/instructor.h gui/instructor.cpp gui/instructor.ui
         gui/courses.ui
         gui/studentlogindialog.h gui/studentlogindialog.cpp gui/studentlogindialog.ui
+        gui/studentdashboard.h gui/studentDashboard.cpp
+        gui/studentdashboard.h gui/studentDashboard.cpp gui/studentDashboard.ui
 
     )
 # Define target properties for Android with Qt 6 as:

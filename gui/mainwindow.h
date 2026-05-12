@@ -11,7 +11,8 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    explicit MainWindow(GradeManager* manager,
+                        QWidget *parent = nullptr);
     ~MainWindow();
 void setGradeManager(GradeManager* manager);
 private slots:
@@ -24,5 +25,5 @@ private slots:
 
 private:
     Ui::MainWindow *ui; // This connects to your .ui file!
-GradeManager* gradeManager;
+GradeManager* backend;
 };

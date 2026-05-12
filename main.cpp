@@ -45,8 +45,7 @@ int main(int argc, char *argv[])
     manager.addTermGPA(1005, Term::Spring, 3.9);
 
 
-    MainWindow w;
-
+    MainWindow w(&manager);
     w.show();
 
 

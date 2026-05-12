@@ -8,7 +8,7 @@
 #include "instructor.h"
 #include "studentlogindialog.h"
 #include "../src/GradeManager.hpp"
-
+#include "studentdashboard.h"
 #include <QMessageBox>
 #include <QPushButton>
 
@@ -43,21 +43,16 @@ void loadTestData(GradeManager* backend) {
     backend->addTermGPA(1049, Term::Spring, 3.0);
 }
 
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+MainWindow::MainWindow(GradeManager* manager,
+                       QWidget *parent)
+    : QMainWindow(parent),
+    ui(new Ui::MainWindow),
+    backend(manager)
 {
     ui->setupUi(this);
 
+loadTestData(backend);
 
-    connect(ui->btn_instructor, &QPushButton::clicked, this, [=](){
-        GradeManager* masterBackend = new GradeManager();
-
-        loadTestData(masterBackend);
-      Instructor *ins = new Instructor(masterBackend);
-        ins->show();
-
-    });
 
     // Light mode override for the main window
 
@@ -73,10 +68,9 @@ MainWindow::MainWindow(QWidget *parent)
     ui->mainStack->setCurrentIndex(0);
 
     // Initialize the main backend database
-    GradeManager* masterBackend = new GradeManager();
-    
+
     // Load the mock data into the tree immediately
-    loadTestData(masterBackend);
+
 
 
     // ==========================================
@@ -86,20 +80,30 @@ MainWindow::MainWindow(QWidget *parent)
     // INSTRUCTOR LOGIN
     connect(ui->btn_instructor, &QPushButton::clicked, this, [=](){
         // Open the Instructor Dashboard AND pass the backend to it!
-        Instructor *ins = new Instructor(masterBackend);
+        Instructor *ins = new Instructor(backend,this);
         ins->show();
+        this->hide();
         
         // Optional: you can hide the main window here if you want using this->hide();
     });
 
-    // STUDENT LOGIN
     connect(ui->btn_student, &QPushButton::clicked, this, [this]() {
-        StudentLoginDialog loginDialog(this);
-        
-        if (loginDialog.exec() == QDialog::Accepted) {
-            QString studentId = loginDialog.getEnteredID();
-            QMessageBox::information(this, "Login Successful", "Welcome to your dashboard, Student ID: " + studentId);
-            ui->mainStack->setCurrentIndex(1); 
+
+        StudentLoginDialog* loginDialog =
+            new StudentLoginDialog(backend, this);
+
+        if (loginDialog->exec() == QDialog::Accepted) {
+
+            Student* student =
+                loginDialog->getLoggedStudent();
+
+            StudentDashboard* dashboard =
+                new StudentDashboard(student);
+
+
+            dashboard->show();
+            this->hide();
+
         }
     });
 

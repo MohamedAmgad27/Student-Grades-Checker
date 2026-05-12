@@ -172,7 +172,7 @@ void Instructor::setupStudentsTable()
     ui->studentsTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
     // 3. DYNAMIC DATA INTEGRATION
-    std::vector<Student*> allStudents = backend->getAllStudents();
+    std::vector<Student*> allStudents = backend->getAllStudentsAsList();
     ui->studentsTable->setRowCount(allStudents.size());
     
     for (size_t i = 0; i < allStudents.size(); ++i) {

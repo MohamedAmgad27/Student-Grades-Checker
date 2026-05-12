@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>700</width>
-    <height>350</height>
+    <height>389</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,135 +16,130 @@
   <property name="styleSheet">
    <string>QDialog { background-color: #f8fafc; }</string>
   </property>
-  <layout class="QHBoxLayout" name="horizontalLayout">
-   <property name="spacing">
-    <number>20</number>
+  <widget class="QLabel" name="label_avatar">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>100</y>
+     <width>180</width>
+     <height>180</height>
+    </rect>
    </property>
-   <property name="leftMargin">
-    <number>30</number>
+   <property name="minimumSize">
+    <size>
+     <width>180</width>
+     <height>180</height>
+    </size>
    </property>
-   <property name="topMargin">
-    <number>20</number>
+   <property name="maximumSize">
+    <size>
+     <width>180</width>
+     <height>180</height>
+    </size>
    </property>
-   <property name="rightMargin">
-    <number>30</number>
-   </property>
-   <property name="bottomMargin">
-    <number>20</number>
-   </property>
-   
-   <item>
-    <widget class="QLabel" name="label_avatar">
-     <property name="minimumSize">
-      <size>
-       <width>180</width>
-       <height>180</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>180</width>
-       <height>180</height>
-      </size>
-     </property>
-     <property name="styleSheet">
-      <string>
+   <property name="styleSheet">
+    <string>
        QLabel {
            background-color: #dbeafe;
            border-radius: 90px;
            font-size: 80px;
        }
       </string>
-     </property>
-     <property name="text">
-      <string>👨‍🎓</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-   </item>
-   
-   <item>
-    <widget class="QFrame" name="frame_loginCard">
-     <property name="styleSheet">
-      <string>
+   </property>
+   <property name="text">
+    <string>👨‍🎓</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignmentFlag::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QFrame" name="frame_loginCard">
+   <property name="geometry">
+    <rect>
+     <x>279</x>
+     <y>20</y>
+     <width>391</width>
+     <height>349</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string>
        QFrame#frame_loginCard {
            background-color: white;
            border-radius: 12px;
            border: 1px solid #e5e7eb;
        }
       </string>
-     </property>
-     <layout class="QVBoxLayout" name="verticalLayout">
-      <property name="spacing">
-       <number>12</number>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="spacing">
+     <number>12</number>
+    </property>
+    <property name="leftMargin">
+     <number>30</number>
+    </property>
+    <property name="topMargin">
+     <number>30</number>
+    </property>
+    <property name="rightMargin">
+     <number>30</number>
+    </property>
+    <property name="bottomMargin">
+     <number>30</number>
+    </property>
+    <item>
+     <widget class="QLabel" name="label_title">
+      <property name="styleSheet">
+       <string>font-size: 22px; font-weight: bold; color: #0f172a;</string>
       </property>
-      <property name="leftMargin">
-       <number>30</number>
+      <property name="text">
+       <string>Student Login</string>
       </property>
-      <property name="topMargin">
-       <number>30</number>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_subtitle">
+      <property name="styleSheet">
+       <string>font-size: 14px; color: #475569;</string>
       </property>
-      <property name="rightMargin">
-       <number>30</number>
+      <property name="text">
+       <string>Enter your Student ID to access your dashboard</string>
       </property>
-      <property name="bottomMargin">
-       <number>30</number>
+     </widget>
+    </item>
+    <item>
+     <spacer name="verticalSpacer1">
+      <property name="orientation">
+       <enum>Qt::Orientation::Vertical</enum>
       </property>
-      <item>
-       <widget class="QLabel" name="label_title">
-        <property name="styleSheet">
-         <string>font-size: 22px; font-weight: bold; color: #0f172a;</string>
-        </property>
-        <property name="text">
-         <string>Student Login</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_subtitle">
-        <property name="styleSheet">
-         <string>font-size: 14px; color: #475569;</string>
-        </property>
-        <property name="text">
-         <string>Enter your Student ID to access your dashboard</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <spacer name="verticalSpacer1">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>10</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_idInput">
-        <property name="styleSheet">
-         <string>font-size: 13px; font-weight: bold; color: #1e293b;</string>
-        </property>
-        <property name="text">
-         <string>Student ID</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="lineEdit_studentId">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>40</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>10</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_idInput">
+      <property name="styleSheet">
+       <string>font-size: 13px; font-weight: bold; color: #1e293b;</string>
+      </property>
+      <property name="text">
+       <string>Student ID</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="lineEdit_studentId">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>40</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string>
           QLineEdit {
               border: 1px solid #cbd5e1;
               border-radius: 6px;
@@ -155,22 +150,22 @@
           }
           QLineEdit:focus { border: 2px solid #2563eb; }
          </string>
-        </property>
-        <property name="placeholderText">
-         <string>👤 Enter your Student ID</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="btn_search">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>45</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string>
+      </property>
+      <property name="placeholderText">
+       <string>👤 Enter your Student ID</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="btn_search">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>45</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string>
           QPushButton {
               background-color: #1d4ed8;
               color: white;
@@ -181,29 +176,29 @@
           QPushButton:hover { background-color: #1e40af; }
           QPushButton:pressed { background-color: #1e3a8a; }
          </string>
-        </property>
-        <property name="text">
-         <string>🔍 Search</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <spacer name="verticalSpacer2">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>10</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_tip">
-        <property name="styleSheet">
-         <string>
+      </property>
+      <property name="text">
+       <string>🔍 Search</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <spacer name="verticalSpacer2">
+      <property name="orientation">
+       <enum>Qt::Orientation::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>10</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_tip">
+      <property name="styleSheet">
+       <string>
           QLabel {
               background-color: #eff6ff;
               color: #1e3a8a;
@@ -212,17 +207,31 @@
               font-size: 12px;
           }
          </string>
-        </property>
-        <property name="text">
-         <string>💡 Tip: Use your unique student ID
-Example: 2021-15-1045</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-  </layout>
+      </property>
+      <property name="text">
+       <string>💡 Tip: Use your unique student ID
+Example: 1045</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QPushButton" name="btn_back">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>90</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:grey</string>
+   </property>
+   <property name="text">
+    <string>Back</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>
